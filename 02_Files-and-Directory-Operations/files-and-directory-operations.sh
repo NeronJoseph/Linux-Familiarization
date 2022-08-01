@@ -69,3 +69,65 @@ stat test.txt
 # Create a hard link of a file 
 # Syntax: ln <path-to-target> <path-to-link-file>
 ln /home/neron/test-link.txt /home/neron/test.txt
+
+# Search for files with specified name
+# Syntax: find <location> -name <filename>
+find /usr/share -name '*.jpg'
+
+# Search for files specified size 
+find /lib64/ -size +10M
+
+# Find file modified in less than 1 min
+find /dev/ -mmin -1
+
+# Find a file with case insensitive filename
+find -iname 'file1.jpg'
+
+# Find all file names starts with f
+find -name 'f*'
+
+# Find file modified 5 minutes before. Not in the entire 5 minutes, the exact minute before 5 minute.
+find -mmin 5
+
+# Find all files modified within 5 minutes 
+find -mmin -5
+
+# Find all files modified before 5 minutes 
+find -mmin +5
+
+# Find files changes in last 24 hours 
+find -mtime 0
+
+# Find files changed in the last 48 hours
+find -mtime 1
+
+# Find file changed in the last 5 min 
+find -cmin -5
+
+# Find files with size 512k
+find -size 512k
+
+# Find files with size greater than 512k
+find -size +512k
+
+# Find files with size less than 10MB
+find -size -10M
+
+# Find file with AND operator 
+find  -name 'file.txt' -size +10M
+
+# Find file with OR operator 
+find -name 'file.txt' -o -size +10M 
+
+# File file with NOT operator 
+find -not -name 'f*'
+find \! -name 'f*'
+
+# Find file with permissions
+find -perm 644                  # find file with exact permissions
+find -perm -644                 # find file with at least this permissions
+find -perm /644                 # find file with any of these permissions
+
+find -perm u=rw,g=rw,o=r        # find file with exact permissions
+find -perm -u=rw,g=rw,o=r       # find file with at least this permissions
+find -perm /u=rw,g=rw,o=r       # find file with any of these permissions
