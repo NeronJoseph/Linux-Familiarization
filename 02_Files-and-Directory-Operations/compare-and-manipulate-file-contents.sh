@@ -40,3 +40,14 @@ diff -f file1 file2
 # Side by side comparison
 diff -y file1 file2
 sdiff file1 file2
+
+# Change all values enabled to disabled in /home/bob/values.conf config file from line number 500 to 2000.
+sed -i '500,2000s/enabled/disabled/g' values.conf
+sed -i '500,2000s/enabled/disabled/gi' values.conf # with case insensitivity 
+
+# Replace all occurrence of string #%$2jh//238720//31223 with $2//23872031223 in /home/bob/data.txt file.
+sed -i 's~#%$2jh//238720//31223~$2//23872031223~g' /home/bob/data.txt
+
+# Filter out the lines that contain any word that starts with a capital letter and are then followed by exactly 
+# two lowercase letters in /etc/nsswitch.conf file and save the output in /home/bob/filtered1 file.
+egrep -w '[A-Z][a-z]{2}' /etc/nsswitch.conf > /home/bob/filtered1
